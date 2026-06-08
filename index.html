@@ -1,79 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Movie Recommendation App</title>
+  <title>Movie App - Login</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- LOGIN PAGE -->
-<div id="loginPage" class="page active">
+<div class="center-box">
 
-  <div class="login-box">
-    <h1>🎬 Movie App Login</h1>
+  <h1>🎬 Movie World</h1>
 
-    <input type="email" id="email" placeholder="Email">
-    <input type="password" id="password" placeholder="Password">
+  <input type="email" id="email" placeholder="Email">
+  <input type="password" id="password" placeholder="Password">
 
-    <button onclick="login()">Login</button>
+  <button onclick="login()">Login</button>
 
-    <p class="link" onclick="forgotPassword()">Forgot Password?</p>
+  <button onclick="googleLogin()">Login with Google</button>
 
-    <button class="google-btn" onclick="googleLogin()">
-      Login with Google
-    </button>
-  </div>
+  <p onclick="forgot()">Forgot Password?</p>
 
-</div>
+  <hr>
 
-<!-- MAIN APP -->
-<div id="appPage" class="page">
+  <h3>Select Language</h3>
 
-  <!-- LANGUAGE SELECT -->
-  <div class="top-bar">
-    <button onclick="selectLang('Telugu')">Telugu</button>
-    <button onclick="selectLang('Hindi')">Hindi</button>
-    <button onclick="selectLang('English')">English</button>
-    <button onclick="selectLang('Tamil')">Tamil</button>
-    <button onclick="selectLang('Malayalam')">Malayalam</button>
-  </div>
-
-  <!-- TYPE SELECT -->
-  <div id="typeSection" class="section">
-    <h2>Select Movie Type</h2>
-
-    <button onclick="selectType('Action')">Action</button>
-    <button onclick="selectType('Romance')">Romance</button>
-    <button onclick="selectType('Comedy')">Comedy</button>
-    <button onclick="selectType('Drama')">Drama</button>
-    <button onclick="selectType('Sci-Fi')">Sci-Fi</button>
-  </div>
-
-  <!-- MOVIES -->
-  <div id="moviesSection" class="section">
-    <h2>Recommended Movies</h2>
-    <div id="movies"></div>
-  </div>
-
-  <!-- RATING -->
-  <div id="ratingSection" class="section">
-    <h2>Rate Movie</h2>
-    <p id="selectedMovie"></p>
-
-    <select id="rating">
-      <option value="1">1 ⭐</option>
-      <option value="2">2 ⭐</option>
-      <option value="3">3 ⭐</option>
-      <option value="4">4 ⭐</option>
-      <option value="5">5 ⭐</option>
-    </select>
-
-    <button onclick="submitRating()">Submit Rating</button>
-  </div>
+  <button onclick="go('telugu')">Telugu</button>
+  <button onclick="go('hindi')">Hindi</button>
+  <button onclick="go('english')">English</button>
+  <button onclick="go('tamil')">Tamil</button>
+  <button onclick="go('malayalam')">Malayalam</button>
 
 </div>
 
-<script src="script.js"></script>
+<script>
+function login(){
+  if(document.getElementById("email").value){
+    alert("Login Successful");
+  }
+}
+
+function googleLogin(){
+  alert("Google Login Successful (Demo)");
+}
+
+function forgot(){
+  let e = prompt("Enter email");
+  alert("Reset link sent to " + e);
+}
+
+function go(lang){
+  localStorage.setItem("lang", lang);
+  window.location.href = "home.html";
+}
+</script>
+
 </body>
 </html>

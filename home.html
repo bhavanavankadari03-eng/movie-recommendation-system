@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Movie Recommendation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="top">
+  <h2>Movie Recommendation System</h2>
+</div>
+
+<div class="section">
+
+  <h3>Select Movie Type</h3>
+
+  <button onclick="setType('Action')">Action</button>
+  <button onclick="setType('Romance')">Romance</button>
+  <button onclick="setType('Comedy')">Comedy</button>
+  <button onclick="setType('Drama')">Drama</button>
+  <button onclick="setType('Sci-Fi')">Sci-Fi</button>
+
+</div>
+
+<div id="movies"></div>
+
+<div id="ratingBox" class="rating-box">
+  <h3 id="movieName"></h3>
+
+  <select id="rating">
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+  </select>
+
+  <button onclick="rateMovie()">Rate</button>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
