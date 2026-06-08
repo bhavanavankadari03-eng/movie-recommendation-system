@@ -1,88 +1,103 @@
-let lang = "";
-let type = "";
+let selectedType = "";
 let selectedMovie = "";
 
-// LOGIN (if you still use login page)
-function login(){
-  let email = document.getElementById("email").value;
-
-  if(email){
-    alert("Login Successful ✔ Welcome " + email);
-    window.location.href = "home.html";
-  } else {
-    alert("Please enter email");
-  }
+// BIG MOVIE DATABASE (can expand / later replace with API)
+const movies = [
+{
+name:"RRR",
+lang:"telugu",
+type:"Action",
+poster:"https://upload.wikimedia.org/wikipedia/en/d/d7/RRR_Poster.jpg"
+},
+{
+name:"Baahubali",
+lang:"telugu",
+type:"Action",
+poster:"https://upload.wikimedia.org/wikipedia/en/7/7e/Baahubali_poster.jpg"
+},
+{
+name:"3 Idiots",
+lang:"hindi",
+type:"Comedy",
+poster:"https://upload.wikimedia.org/wikipedia/en/5/5f/3_Idiots_poster.jpg"
+},
+{
+name:"Dangal",
+lang:"hindi",
+type:"Drama",
+poster:"https://upload.wikimedia.org/wikipedia/en/9/99/Dangal_Poster.jpg"
+},
+{
+name:"Avengers Endgame",
+lang:"english",
+type:"Action",
+poster:"https://upload.wikimedia.org/wikipedia/en/0/0d/Avengers_Endgame_poster.jpg"
+},
+{
+name:"Titanic",
+lang:"english",
+type:"Romance",
+poster:"https://upload.wikimedia.org/wikipedia/en/2/22/Titanic_poster.jpg"
+},
+{
+name:"Vikram",
+lang:"tamil",
+type:"Action",
+poster:"https://upload.wikimedia.org/wikipedia/en/7/78/Vikram_2022_poster.jpg"
+},
+{
+name:"Premam",
+lang:"malayalam",
+type:"Romance",
+poster:"https://upload.wikimedia.org/wikipedia/en/5/5c/Premam_poster.jpg"
 }
+];
 
-// LANGUAGE SELECT
-function setLang(l){
-  lang = l;
+// FILTER LANGUAGE
+let lang = localStorage.getItem("lang");
 
-  alert("Language Selected: " + lang);
-
-  document.getElementById("langSection").classList.add("hidden");
-  document.getElementById("typeSection").classList.remove("hidden");
-}
-
-// TYPE SELECT
-function setType(t){
-  type = t;
-
-  alert("Movie Type Selected: " + type);
-
-  document.getElementById("typeSection").classList.add("hidden");
-  document.getElementById("movieSection").classList.remove("hidden");
-
+function setType(type){
+  selectedType = type;
   showMovies();
 }
 
 // SHOW MOVIES
 function showMovies(){
-  let container = document.getElementById("movies");
-  container.innerHTML = "";
 
-  let filtered = movies.filter(m =>
-    m.lang === lang && m.type === type
-  );
+let container = document.getElementById("movies");
+container.innerHTML = "";
 
-  filtered.forEach(movie => {
+let filtered = movies.filter(m =>
+  m.lang === lang && m.type === selectedType
+);
 
-    let div = document.createElement("div");
-    div.className = "movie-card";
+filtered.forEach(movie => {
 
-    div.innerHTML = `
-      <img src="${movie.poster}">
-      <h4>${movie.name}</h4>
-      <button onclick="rateMovie('${movie.name}')">Select</button>
-    `;
+let div = document.createElement("div");
+div.className = "movie-card";
 
-    container.appendChild(div);
-  });
+div.innerHTML = `
+<img src="${movie.poster}">
+<h3>${movie.name}</h3>
+<button onclick="openRating('${movie.name}')">Rate</button>
+`;
+
+container.appendChild(div);
+
+});
+
 }
 
-// MOVIE SELECT
-function rateMovie(name){
+// OPEN RATING
+function openRating(name){
   selectedMovie = name;
 
-  alert("Movie Selected: " + selectedMovie);
-
-  document.getElementById("movieTitle").innerText = name;
-
-  document.getElementById("movieSection").classList.add("hidden");
-  document.getElementById("ratingSection").classList.remove("hidden");
+  document.getElementById("movieName").innerText = name;
+  document.getElementById("ratingBox").style.display = "block";
 }
 
-// SUBMIT RATING
-function submitRating(){
+// RATE MOVIE
+function rateMovie(){
   let r = document.getElementById("rating").value;
-
   alert("You rated " + selectedMovie + " : " + r + " ⭐");
-
-  // RESET FLOW
-  document.getElementById("ratingSection").classList.add("hidden");
-  document.getElementById("langSection").classList.remove("hidden");
-
-  lang = "";
-  type = "";
-  selectedMovie = "";
 }
