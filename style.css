@@ -1,45 +1,86 @@
 body {
-  font-family: Arial;
   margin: 0;
-  background: #0f0f1a;
+  font-family: Arial;
+  background: #0b0b16;
   color: white;
 }
 
-.center-box {
-  text-align: center;
-  margin-top: 100px;
+/* LOGIN */
+.login-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: radial-gradient(#1b1b2f, #0b0b16);
 }
 
-input, button {
+.login-card {
+  background: #1c1c2e;
+  padding: 40px;
+  border-radius: 15px;
+  text-align: center;
+  width: 300px;
+}
+
+input {
+  width: 90%;
   padding: 10px;
-  margin: 5px;
+  margin: 10px 0;
 }
 
 button {
-  background: red;
+  background: #e50914;
   color: white;
   border: none;
+  padding: 10px;
+  margin: 5px;
   cursor: pointer;
+  width: 95%;
+  border-radius: 5px;
 }
 
-.top {
+/* TOPBAR */
+.topbar {
   background: #111;
   padding: 15px;
   text-align: center;
 }
 
+/* SECTIONS */
 .section {
   padding: 20px;
   text-align: center;
 }
 
+.hidden {
+  display: none;
+}
+
+/* GRID BUTTONS */
+.grid button {
+  margin: 10px;
+  padding: 12px;
+  width: 120px;
+}
+
+/* MOVIES */
+.movie-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .movie-card {
-  background: #222;
+  background: #1c1c2e;
   margin: 10px;
   padding: 10px;
-  display: inline-block;
-  width: 200px;
+  width: 180px;
   border-radius: 10px;
+  transition: 0.3s;
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
 }
 
 .movie-card img {
@@ -47,8 +88,8 @@ button {
   border-radius: 10px;
 }
 
-.rating-box {
-  display: none;
+/* RATING */
+.rating {
   text-align: center;
   margin-top: 20px;
 }

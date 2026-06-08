@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Movie App - Login</title>
+  <title>Login - Movie App</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="login-body">
 
-<div class="center-box">
+<div class="login-card">
 
   <h1>🎬 Movie World</h1>
 
@@ -15,41 +15,18 @@
 
   <button onclick="login()">Login</button>
 
-  <button onclick="googleLogin()">Login with Google</button>
+  <button class="google">Continue with Google</button>
 
-  <p onclick="forgot()">Forgot Password?</p>
-
-  <hr>
-
-  <h3>Select Language</h3>
-
-  <button onclick="go('telugu')">Telugu</button>
-  <button onclick="go('hindi')">Hindi</button>
-  <button onclick="go('english')">English</button>
-  <button onclick="go('tamil')">Tamil</button>
-  <button onclick="go('malayalam')">Malayalam</button>
+  <p class="small">Forgot password? Click reset in app</p>
 
 </div>
 
 <script>
 function login(){
-  if(document.getElementById("email").value){
-    alert("Login Successful");
+  let email = document.getElementById("email").value;
+  if(email){
+    window.location.href = "home.html";
   }
-}
-
-function googleLogin(){
-  alert("Google Login Successful (Demo)");
-}
-
-function forgot(){
-  let e = prompt("Enter email");
-  alert("Reset link sent to " + e);
-}
-
-function go(lang){
-  localStorage.setItem("lang", lang);
-  window.location.href = "home.html";
 }
 </script>
 

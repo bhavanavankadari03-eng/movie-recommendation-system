@@ -1,7 +1,8 @@
-let selectedType = "";
+let lang = "";
+let type = "";
 let selectedMovie = "";
 
-// BIG MOVIE DATABASE (can expand / later replace with API)
+// MOVIE DATABASE (expandable / API ready)
 const movies = [
 {
 name:"RRR",
@@ -38,66 +39,71 @@ name:"Titanic",
 lang:"english",
 type:"Romance",
 poster:"https://upload.wikimedia.org/wikipedia/en/2/22/Titanic_poster.jpg"
-},
-{
-name:"Vikram",
-lang:"tamil",
-type:"Action",
-poster:"https://upload.wikimedia.org/wikipedia/en/7/78/Vikram_2022_poster.jpg"
-},
-{
-name:"Premam",
-lang:"malayalam",
-type:"Romance",
-poster:"https://upload.wikimedia.org/wikipedia/en/5/5c/Premam_poster.jpg"
 }
 ];
 
-// FILTER LANGUAGE
-let lang = localStorage.getItem("lang");
+// LANGUAGE SELECT
+function setLang(l){
+  lang = l;
 
-function setType(type){
-  selectedType = type;
+  document.getElementById("langSection").classList.add("hidden");
+  document.getElementById("typeSection").classList.remove("hidden");
+}
+
+// TYPE SELECT
+function setType(t){
+  type = t;
+
+  document.getElementById("typeSection").classList.add("hidden");
+  document.getElementById("movieSection").classList.remove("hidden");
+
   showMovies();
 }
 
 // SHOW MOVIES
 function showMovies(){
+  let container = document.getElementById("movies");
+  container.innerHTML = "";
 
-let container = document.getElementById("movies");
-container.innerHTML = "";
+  let filtered = movies.filter(m =>
+    m.lang === lang && m.type === type
+  );
 
-let filtered = movies.filter(m =>
-  m.lang === lang && m.type === selectedType
-);
+  filtered.forEach(movie => {
 
-filtered.forEach(movie => {
+    let div = document.createElement("div");
+    div.className = "movie-card";
 
-let div = document.createElement("div");
-div.className = "movie-card";
+    div.innerHTML = `
+      <img src="${movie.poster}">
+      <h4>${movie.name}</h4>
+      <button onclick="rateMovie('${movie.name}')">Select</button>
+    `;
 
-div.innerHTML = `
-<img src="${movie.poster}">
-<h3>${movie.name}</h3>
-<button onclick="openRating('${movie.name}')">Rate</button>
-`;
-
-container.appendChild(div);
-
-});
-
+    container.appendChild(div);
+  });
 }
 
 // OPEN RATING
-function openRating(name){
+function rateMovie(name){
   selectedMovie = name;
 
-  document.getElementById("movieName").innerText = name;
-  document.getElementById("ratingBox").style.display = "block";
+  document.getElementById("movieTitle").innerText = name;
+
+  document.getElementById("movieSection").classList.add("hidden");
+  document.getElementById("ratingSection").classList.remove("hidden");
 }
 
-// RATE MOVIE
-function rateMovie(){
+// SUBMIT RATING + RESET FLOW
+function submitRating(){
   let r = document.getElementById("rating").value;
-  alert("You rated " + selectedMovie + " : " + r + " ⭐");
+
+  // reset UI smoothly
+  document.getElementById("ratingSection").classList.add("hidden");
+  document.getElementById("langSection").classList.remove("hidden");
+
+  // reset selections
+  lang = "";
+  type = "";
+  selectedMovie = "";
 }

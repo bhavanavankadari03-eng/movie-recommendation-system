@@ -1,44 +1,62 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Movie Recommendation</title>
+  <title>Movie App</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="top">
+<div class="topbar">
   <h2>Movie Recommendation System</h2>
 </div>
 
-<div class="section">
+<!-- LANGUAGE SECTION -->
+<div id="langSection" class="section">
+  <h2>Select Language</h2>
 
-  <h3>Select Movie Type</h3>
-
-  <button onclick="setType('Action')">Action</button>
-  <button onclick="setType('Romance')">Romance</button>
-  <button onclick="setType('Comedy')">Comedy</button>
-  <button onclick="setType('Drama')">Drama</button>
-  <button onclick="setType('Sci-Fi')">Sci-Fi</button>
-
+  <div class="grid">
+    <button onclick="setLang('telugu')">Telugu</button>
+    <button onclick="setLang('hindi')">Hindi</button>
+    <button onclick="setLang('english')">English</button>
+    <button onclick="setLang('tamil')">Tamil</button>
+    <button onclick="setLang('malayalam')">Malayalam</button>
+  </div>
 </div>
 
-<div id="movies"></div>
+<!-- TYPE SECTION -->
+<div id="typeSection" class="section hidden">
+  <h2>Select Genre</h2>
 
-<div id="ratingBox" class="rating-box">
-  <h3 id="movieName"></h3>
+  <div class="grid">
+    <button onclick="setType('Action')">Action</button>
+    <button onclick="setType('Romance')">Romance</button>
+    <button onclick="setType('Comedy')">Comedy</button>
+    <button onclick="setType('Drama')">Drama</button>
+    <button onclick="setType('Sci-Fi')">Sci-Fi</button>
+  </div>
+</div>
+
+<!-- MOVIES -->
+<div id="movieSection" class="section hidden">
+  <h2>Recommended Movies</h2>
+  <div id="movies" class="movie-grid"></div>
+</div>
+
+<!-- RATING -->
+<div id="ratingSection" class="rating hidden">
+  <h2 id="movieTitle"></h2>
 
   <select id="rating">
-    <option>1</option>
-    <option>2</option>
-    <option>3</option>
-    <option>4</option>
-    <option>5</option>
+    <option value="1">1 ⭐</option>
+    <option value="2">2 ⭐</option>
+    <option value="3">3 ⭐</option>
+    <option value="4">4 ⭐</option>
+    <option value="5">5 ⭐</option>
   </select>
 
-  <button onclick="rateMovie()">Rate</button>
+  <button onclick="submitRating()">Submit Rating</button>
 </div>
 
 <script src="script.js"></script>
-
 </body>
 </html>
