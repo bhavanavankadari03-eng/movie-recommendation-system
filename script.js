@@ -2,49 +2,23 @@ let lang = "";
 let type = "";
 let selectedMovie = "";
 
-// MOVIE DATABASE (expandable / API ready)
-const movies = [
-{
-name:"RRR",
-lang:"telugu",
-type:"Action",
-poster:"https://upload.wikimedia.org/wikipedia/en/d/d7/RRR_Poster.jpg"
-},
-{
-name:"Baahubali",
-lang:"telugu",
-type:"Action",
-poster:"https://upload.wikimedia.org/wikipedia/en/7/7e/Baahubali_poster.jpg"
-},
-{
-name:"3 Idiots",
-lang:"hindi",
-type:"Comedy",
-poster:"https://upload.wikimedia.org/wikipedia/en/5/5f/3_Idiots_poster.jpg"
-},
-{
-name:"Dangal",
-lang:"hindi",
-type:"Drama",
-poster:"https://upload.wikimedia.org/wikipedia/en/9/99/Dangal_Poster.jpg"
-},
-{
-name:"Avengers Endgame",
-lang:"english",
-type:"Action",
-poster:"https://upload.wikimedia.org/wikipedia/en/0/0d/Avengers_Endgame_poster.jpg"
-},
-{
-name:"Titanic",
-lang:"english",
-type:"Romance",
-poster:"https://upload.wikimedia.org/wikipedia/en/2/22/Titanic_poster.jpg"
+// LOGIN (if you still use login page)
+function login(){
+  let email = document.getElementById("email").value;
+
+  if(email){
+    alert("Login Successful ✔ Welcome " + email);
+    window.location.href = "home.html";
+  } else {
+    alert("Please enter email");
+  }
 }
-];
 
 // LANGUAGE SELECT
 function setLang(l){
   lang = l;
+
+  alert("Language Selected: " + lang);
 
   document.getElementById("langSection").classList.add("hidden");
   document.getElementById("typeSection").classList.remove("hidden");
@@ -53,6 +27,8 @@ function setLang(l){
 // TYPE SELECT
 function setType(t){
   type = t;
+
+  alert("Movie Type Selected: " + type);
 
   document.getElementById("typeSection").classList.add("hidden");
   document.getElementById("movieSection").classList.remove("hidden");
@@ -84,9 +60,11 @@ function showMovies(){
   });
 }
 
-// OPEN RATING
+// MOVIE SELECT
 function rateMovie(name){
   selectedMovie = name;
+
+  alert("Movie Selected: " + selectedMovie);
 
   document.getElementById("movieTitle").innerText = name;
 
@@ -94,15 +72,16 @@ function rateMovie(name){
   document.getElementById("ratingSection").classList.remove("hidden");
 }
 
-// SUBMIT RATING + RESET FLOW
+// SUBMIT RATING
 function submitRating(){
   let r = document.getElementById("rating").value;
 
-  // reset UI smoothly
+  alert("You rated " + selectedMovie + " : " + r + " ⭐");
+
+  // RESET FLOW
   document.getElementById("ratingSection").classList.add("hidden");
   document.getElementById("langSection").classList.remove("hidden");
 
-  // reset selections
   lang = "";
   type = "";
   selectedMovie = "";
