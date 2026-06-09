@@ -1,7 +1,4 @@
-/* =========================
-   SIGNUP + LOGIN (INDEX PAGE)
-========================= */
-
+/* LOGIN */
 function showSignup(){
     document.getElementById("loginForm").style.display = "none";
     document.getElementById("signupForm").style.display = "block";
@@ -13,200 +10,136 @@ function showLogin(){
 }
 
 function signup(){
+    localStorage.setItem("email", document.getElementById("signupEmail").value);
+    localStorage.setItem("pass", document.getElementById("signupPassword").value);
 
-    let name = document.getElementById("name").value;
-    let email = document.getElementById("signupEmail").value;
-    let pass = document.getElementById("signupPassword").value;
-    let confirm = document.getElementById("confirmPassword").value;
-
-    if(pass !== confirm){
-        alert("Passwords do not match");
-        return;
-    }
-
-    localStorage.setItem("user", name);
-    localStorage.setItem("email", email);
-    localStorage.setItem("pass", pass);
-
-    alert("Account Created Successfully");
-
+    alert("Account Created");
     window.location.href = "language.html";
 }
 
 function login(){
 
-    let email = document.getElementById("loginEmail").value;
-    let pass = document.getElementById("loginPassword").value;
+    let e = document.getElementById("loginEmail").value;
+    let p = document.getElementById("loginPassword").value;
 
-    let savedEmail = localStorage.getItem("email");
-    let savedPass = localStorage.getItem("pass");
-
-    if(email === savedEmail && pass === savedPass){
-        alert("Login Successful");
+    if(e === localStorage.getItem("email") && p === localStorage.getItem("pass")){
+        alert("Login Success");
         window.location.href = "language.html";
     } else {
-        alert("Invalid Credentials");
+        alert("Wrong credentials");
     }
 }
 
-function forgotPassword(){
-    let email = prompt("Enter your email:");
-    alert("Password reset link sent to " + email);
-}
-
 function googleLogin(){
-    alert("Google Login Successful (Demo)");
+    alert("Google Login Success (demo)");
     window.location.href = "language.html";
 }
 
-
-/* =========================
-   LANGUAGE SELECTION
-========================= */
-
+/* LANGUAGE */
 function selectLanguage(lang){
-
-    localStorage.setItem("language", lang);
-
-    alert("Language Selected: " + lang);
-
+    localStorage.setItem("language", lang.toLowerCase());
+    alert(lang + " selected");
     window.location.href = "genre.html";
 }
 
-
-/* =========================
-   GENRE SELECTION
-========================= */
-
+/* GENRE */
 function selectGenre(genre){
-
     localStorage.setItem("genre", genre);
-
-    alert("Genre Selected: " + genre);
-
+    alert(genre + " selected");
     window.location.href = "movies.html";
 }
 
-
-/* =========================
-   MOVIE DATABASE
-========================= */
-
+/* MOVIE DATABASE */
 const movies = {
-
-telugu: {
-    Action: ["RRR","Baahubali","Pushpa","Salaar","Akhanda"],
-    Comedy: ["Jathi Ratnalu","DJ Tillu","Venky","Ready","F2"],
-    Romance: ["Geetha Govindam","Fidaa","Sita Ramam","Arya","Bommarillu"],
-    Drama: ["Mahanati","Leader","Srimanthudu","Kanche","Jersey"],
-    Thriller: ["Goodachari","Evaru","Hit","Drushyam","Kshanam"],
-    Horror: ["Raju Gari Gadhi","Prema Katha Chitram","Anando Brahma","Bhoot","Masooda"],
-    "Sci-Fi": ["Aditya 369","Project K","24","Tik Tik Tik","Antariksham"]
+telugu:{
+Action:["RRR","Baahubali","Pushpa","Salaar","Akhanda"],
+Comedy:["Jathi Ratnalu","DJ Tillu","F2","Venky","Ready"],
+Romance:["Geetha Govindam","Fidaa","Sita Ramam","Arya","Bommarillu"],
+Drama:["Mahanati","Jersey","Srimanthudu","Kanche","Leader"],
+Thriller:["Hit","Evaru","Goodachari","Kshanam","Drushyam"],
+Horror:["Masooda","Raju Gari Gadhi","Anando Brahma","Bhoot","Prema Katha"],
+"Sci-Fi":["Aditya 369","24","Antariksham","Project K","Tik Tik Tik"]
 },
 
-hindi: {
-    Action: ["Pathaan","Jawan","War","URI","Singham"],
-    Comedy: ["3 Idiots","Hera Pheri","Phir Hera Pheri","Stree","Golmaal"],
-    Romance: ["DDLJ","Jab We Met","Rockstar","Veer Zaara","Aashiqui 2"],
-    Drama: ["Dangal","Taare Zameen Par","Chhichhore","Pink","Article 15"],
-    Thriller: ["Drishyam","Kahaani","Andhadhun","Special 26","Badla"],
-    Horror: ["Stree","Raaz","Bhoothnath","Pari","1920"],
-    "Sci-Fi": ["Koi Mil Gaya","Robot","Ra.One","PK","Cargo"]
+hindi:{
+Action:["Pathaan","Jawan","War","URI","Singham"],
+Comedy:["3 Idiots","Hera Pheri","Stree","Golmaal","Phir Hera Pheri"],
+Romance:["DDLJ","Jab We Met","Rockstar","Aashiqui 2","Veer Zaara"],
+Drama:["Dangal","Chhichhore","Pink","Taare Zameen Par","Article 15"],
+Thriller:["Drishyam","Andhadhun","Kahaani","Badla","Special 26"],
+Horror:["Stree","Raaz","Pari","1920","Bhootnath"],
+"Sci-Fi":["Robot","Koi Mil Gaya","Ra.One","PK","Cargo"]
 },
 
-english: {
-    Action: ["Avengers","John Wick","Batman","Mission Impossible","Mad Max"],
-    Comedy: ["Home Alone","The Mask","Ted","Superbad","Deadpool"],
-    Romance: ["Titanic","Notebook","La La Land","Twilight","Me Before You"],
-    Drama: ["Forrest Gump","The Green Mile","Fight Club","Shawshank","The Social Network"],
-    Thriller: ["Inception","Shutter Island","Se7en","Gone Girl","Zodiac"],
-    Horror: ["Conjuring","IT","Annabelle","Hereditary","Exorcist"],
-    "Sci-Fi": ["Interstellar","Interstellar","Dune","Matrix","Avatar"]
+english:{
+Action:["Avengers","John Wick","Batman","Mad Max","Mission Impossible"],
+Comedy:["Deadpool","Ted","Superbad","Home Alone","The Mask"],
+Romance:["Titanic","Notebook","La La Land","Twilight","Me Before You"],
+Drama:["Forrest Gump","Shawshank","Joker","Fight Club","Green Mile"],
+Thriller:["Inception","Se7en","Gone Girl","Shutter Island","Zodiac"],
+Horror:["Conjuring","IT","Annabelle","Hereditary","Exorcist"],
+"Sci-Fi":["Interstellar","Inception","Dune","Matrix","Avatar"]
 },
 
-tamil: {
-    Action: ["Leo","Vikram","Kaithi","Master","Jailer"],
-    Comedy: ["Vadivelu Movies","Boss Engira Bhaskaran","Remo","Soodhu Kavvum","Dhilluku Dhuddu"],
-    Romance: ["96","Vinnaithaandi Varuvaayaa","OK Kanmani","Minnale","Love Today"],
-    Drama: ["Asuran","Pariyerum Perumal","Jai Bhim","Visaranai","Karnan"],
-    Thriller: ["Ratsasan","Thani Oruvan","Vikram Vedha","Anniyan","Dhuruvangal Pathinaaru"],
-    Horror: ["Kanchana","Pizza","Darling","Aval","Demonte Colony"],
-    "Sci-Fi": ["24","Tik Tik Tik","Indru Netru Naalai","Ayalaan","Enemy"]
+tamil:{
+Action:["Leo","Vikram","Kaithi","Master","Jailer"],
+Comedy:["Remo","Vadivelu Hits","Soodhu Kavvum","Dhilluku Dhuddu","Boss Engira"],
+Romance:["96","VTV","OK Kanmani","Minnale","Love Today"],
+Drama:["Asuran","Jai Bhim","Karnan","Visaranai","Pariyerum"],
+Thriller:["Ratsasan","Thani Oruvan","Vikram Vedha","Anniyan","Dhuruvangal"],
+Horror:["Pizza","Kanchana","Aval","Demonte Colony","Darling"],
+"Sci-Fi":["24","Tik Tik Tik","Ayalaan","Enemy","Indru Netru"]
 },
 
-malayalam: {
-    Action: ["Lucifer","Aavesham","Bheeshma Parvam","RDX","Kurup"],
-    Comedy: ["Premam","Bangalore Days","Ustad Hotel","Neram","Ohm Shanthi Oshaana"],
-    Romance: ["Hridayam","Premam","June","Annayum Rasoolum","Charlie"],
-    Drama: ["Drishyam","Kumbalangi Nights","The Great Indian Kitchen","Bangalore Days","Uyare"],
-    Thriller: ["Drishyam 2","Anjaam Pathiraa","Memories","Mumbai Police","Forensic"],
-    Horror: ["Ezra","Bhoothakaalam","Nine","Winter","Red Rain"],
-    "Sci-Fi": ["Android Kunjappan","9","C U Soon","Antariksham","Project K"]
+malayalam:{
+Action:["Lucifer","Aavesham","RDX","Kurup","Bheeshma"],
+Comedy:["Premam","Bangalore Days","Ustad Hotel","Neram","Ohm Shanthi"],
+Romance:["Hridayam","June","Charlie","Premam","Annayum"],
+Drama:["Drishyam","Kumbalangi Nights","Uyare","The Great Indian Kitchen","Bangalore Days"],
+Thriller:["Drishyam 2","Anjaam Pathiraa","Memories","Forensic","Mumbai Police"],
+Horror:["Ezra","Bhoothakaalam","Nine","Winter","Red Rain"],
+"Sci-Fi":["Android Kunjappan","9","C U Soon","Antariksham","Project K"]
 }
-
 };
 
-
-/* =========================
-   LOAD MOVIES (movies.html)
-========================= */
-
+/* LOAD MOVIES */
 function loadMovies(){
 
-    let lang = localStorage.getItem("language");
-    let genre = localStorage.getItem("genre");
+let lang = localStorage.getItem("language");
+let genre = localStorage.getItem("genre");
 
-    let list = movies[lang][genre];
+let list = movies[lang][genre];
 
-    document.getElementById("selectedInfo").innerText =
-        `${lang.toUpperCase()} | ${genre}`;
+document.getElementById("selectedInfo").innerText = lang + " - " + genre;
 
-    let container = document.getElementById("moviesContainer");
+let container = document.getElementById("moviesContainer");
 
-    container.innerHTML = "";
+container.innerHTML = "";
 
-    list.forEach(movie => {
+list.forEach(m => {
 
-        let div = document.createElement("div");
-        div.className = "movie-card";
+let div = document.createElement("div");
+div.className = "movie-card";
 
-        div.innerHTML = `
-            <h3>${movie}</h3>
-            <button onclick="selectMovie('${movie}')">
-                Rate Movie
-            </button>
-        `;
+div.innerHTML = `
+<h3>${m}</h3>
+<button onclick="selectMovie('${m}')">Rate</button>
+`;
 
-        container.appendChild(div);
-    });
+container.appendChild(div);
+
+});
+
 }
 
-
-/* =========================
-   SELECT MOVIE
-========================= */
-
-function selectMovie(movie){
-
-    localStorage.setItem("movie", movie);
-
-    alert("Selected Movie: " + movie);
-
-    window.location.href = "rating.html";
+/* SELECT MOVIE */
+function selectMovie(m){
+localStorage.setItem("movie", m);
+window.location.href = "rating.html";
 }
 
-
-/* =========================
-   RATING PAGE
-========================= */
-
+/* RATING */
 function submitRating(){
-
-    let rating = document.getElementById("rating").value;
-
-    let movie = localStorage.getItem("movie");
-
-    alert("You rated " + movie + " ⭐ " + rating);
-
-    window.location.href = "language.html";
+alert("Rated " + localStorage.getItem("movie") + " ⭐ " + document.getElementById("rating").value);
+window.location.href = "language.html";
 }
