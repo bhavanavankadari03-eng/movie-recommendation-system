@@ -1,62 +1,82 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Login</title>
-  <link rel="stylesheet" href="style.css">
+    <title>Movie Recommendation System</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="center">
+<body class="login-page">
 
-<div class="card">
-  <h1>🎬 Movie World</h1>
+<div class="login-container">
 
-  <input id="email" type="email" placeholder="Email">
-  <input id="pass" type="password" placeholder="Password">
+    <div id="loginForm">
 
-  <button onclick="login()">Login</button>
-  <button class="google">Login with Google</button>
+        <h1>🎬 Movie Recommendation System</h1>
+
+        <input type="email"
+               id="loginEmail"
+               placeholder="Email">
+
+        <input type="password"
+               id="loginPassword"
+               placeholder="Password">
+
+        <button onclick="login()">
+            Login
+        </button>
+
+        <button class="google-btn">
+            Login with Google
+        </button>
+
+        <p onclick="forgotPassword()">
+            Forgot Password?
+        </p>
+
+        <p>
+            New User?
+            <a href="#" onclick="showSignup()">
+                Sign Up
+            </a>
+        </p>
+
+    </div>
+
+    <div id="signupForm" style="display:none;">
+
+        <h1>Create Account</h1>
+
+        <input type="text"
+               id="name"
+               placeholder="Full Name">
+
+        <input type="email"
+               id="signupEmail"
+               placeholder="Email">
+
+        <input type="password"
+               id="signupPassword"
+               placeholder="Password">
+
+        <input type="password"
+               id="confirmPassword"
+               placeholder="Confirm Password">
+
+        <button onclick="signup()">
+            Create Account
+        </button>
+
+        <p>
+            Already have an account?
+            <a href="#" onclick="showLogin()">
+                Login
+            </a>
+        </p>
+
+    </div>
+
 </div>
 
-<script>
-function login(){
-  if(document.getElementById("email").value){
-    alert("Login Successful");
-    window.location.href = "language.html";
-  }
-}
-</script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="script.js"></script>
 
-<script>
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  appId: "YOUR_APP_ID"
-};
-
-firebase.initializeApp(firebaseConfig);
-
-const auth = firebase.auth();
-
-function googleLogin() {
-
-  const provider = new firebase.auth.GoogleAuthProvider();
-
-  auth.signInWithPopup(provider)
-  .then((result) => {
-
-      const user = result.user;
-
-      localStorage.setItem("username", user.displayName);
-      localStorage.setItem("email", user.email);
-
-      window.location.href = "language.html";
-  })
-  .catch((error) => {
-      console.log(error);
-  });
-}
-</script>
 </body>
 </html>

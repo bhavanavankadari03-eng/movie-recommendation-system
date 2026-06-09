@@ -1,30 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Select Language</title>
-  <link rel="stylesheet" href="style.css">
+    <title>Select Language</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="page">
+<div class="page-container">
 
-  <h2>Select Language</h2>
+    <h1>🌍 Select Your Preferred Language</h1>
 
-  <button onclick="go('telugu')">Telugu</button>
-  <button onclick="go('hindi')">Hindi</button>
-  <button onclick="go('english')">English</button>
-  <button onclick="go('tamil')">Tamil</button>
-  <button onclick="go('malayalam')">Malayalam</button>
+    <div class="language-grid">
+
+        <button onclick="selectLanguage('Telugu')">
+            Telugu
+        </button>
+
+        <button onclick="selectLanguage('Hindi')">
+            Hindi
+        </button>
+
+        <button onclick="selectLanguage('English')">
+            English
+        </button>
+
+        <button onclick="selectLanguage('Tamil')">
+            Tamil
+        </button>
+
+        <button onclick="selectLanguage('Malayalam')">
+            Malayalam
+        </button>
+
+    </div>
 
 </div>
 
-<script>
-function go(lang){
-  localStorage.setItem("lang", lang);
-  alert("Language selected: " + lang);
-  window.location.href = "genre.html";
-}
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
