@@ -24,6 +24,39 @@ function login(){
   }
 }
 </script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 
+<script>
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID",
+  appId: "YOUR_APP_ID"
+};
+
+firebase.initializeApp(firebaseConfig);
+
+const auth = firebase.auth();
+
+function googleLogin() {
+
+  const provider = new firebase.auth.GoogleAuthProvider();
+
+  auth.signInWithPopup(provider)
+  .then((result) => {
+
+      const user = result.user;
+
+      localStorage.setItem("username", user.displayName);
+      localStorage.setItem("email", user.email);
+
+      window.location.href = "language.html";
+  })
+  .catch((error) => {
+      console.log(error);
+  });
+}
+</script>
 </body>
 </html>

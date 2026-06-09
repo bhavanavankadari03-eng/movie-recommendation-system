@@ -16,7 +16,34 @@ name:"Pushpa",
 lang:"telugu",
 type:"Action",
 poster:"https://upload.wikimedia.org/wikipedia/en/7/7e/Pushpa_poster.jpg"
+},{
+name:"Pushpa 2",
+lang:"telugu",
+type:"Action",
+poster:"images/pushpa2.jpg"
 },
+
+{
+name:"Kalki 2898 AD",
+lang:"telugu",
+type:"Sci-Fi",
+poster:"images/kalki.jpg"
+},
+
+{
+name:"Devara",
+lang:"telugu",
+type:"Action",
+poster:"images/devara.jpg"
+},
+
+{
+name:"Dune Part Two",
+lang:"english",
+type:"Sci-Fi",
+poster:"images/dune2.jpg"
+}
+,
 {
 name:"3 Idiots",
 lang:"hindi",
