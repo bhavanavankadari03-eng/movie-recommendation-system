@@ -1,7 +1,3 @@
-let selectedType = "";
-let selectedMovie = "";
-
-// BIG MOVIE DATABASE (can expand / later replace with API)
 const movies = [
 {
 name:"RRR",
@@ -14,6 +10,12 @@ name:"Baahubali",
 lang:"telugu",
 type:"Action",
 poster:"https://upload.wikimedia.org/wikipedia/en/7/7e/Baahubali_poster.jpg"
+},
+{
+name:"Pushpa",
+lang:"telugu",
+type:"Action",
+poster:"https://upload.wikimedia.org/wikipedia/en/7/7e/Pushpa_poster.jpg"
 },
 {
 name:"3 Idiots",
@@ -46,6 +48,12 @@ type:"Action",
 poster:"https://upload.wikimedia.org/wikipedia/en/7/78/Vikram_2022_poster.jpg"
 },
 {
+name:"Leo",
+lang:"tamil",
+type:"Action",
+poster:"https://upload.wikimedia.org/wikipedia/en/7/7b/Leo_poster.jpg"
+},
+{
 name:"Premam",
 lang:"malayalam",
 type:"Romance",
@@ -53,51 +61,52 @@ poster:"https://upload.wikimedia.org/wikipedia/en/5/5c/Premam_poster.jpg"
 }
 ];
 
-// FILTER LANGUAGE
+// LOAD MOVIES BASED ON SELECTION
+function loadMovies(){
+
 let lang = localStorage.getItem("lang");
-
-function setType(type){
-  selectedType = type;
-  showMovies();
-}
-
-// SHOW MOVIES
-function showMovies(){
-
-let container = document.getElementById("movies");
-container.innerHTML = "";
+let type = localStorage.getItem("type");
 
 let filtered = movies.filter(m =>
-  m.lang === lang && m.type === selectedType
+  m.lang === lang && m.type === type
 );
 
-filtered.forEach(movie => {
+let box = document.getElementById("movies");
+
+filtered.forEach(m => {
 
 let div = document.createElement("div");
-div.className = "movie-card";
+div.className = "card";
 
 div.innerHTML = `
-<img src="${movie.poster}">
-<h3>${movie.name}</h3>
-<button onclick="openRating('${movie.name}')">Rate</button>
+  <img src="${m.poster}">
+  <h3>${m.name}</h3>
+  <button onclick="rate('${m.name}')">Rate</button>
 `;
 
-container.appendChild(div);
+box.appendChild(div);
 
 });
 
 }
 
-// OPEN RATING
-function openRating(name){
-  selectedMovie = name;
-
-  document.getElementById("movieName").innerText = name;
-  document.getElementById("ratingBox").style.display = "block";
+// GO TO RATING PAGE
+function rate(name){
+  localStorage.setItem("movie", name);
+  window.location.href = "rating.html";
 }
 
-// RATE MOVIE
-function rateMovie(){
+// SHOW MOVIE NAME
+if(document.getElementById("movieName")){
+  document.getElementById("movieName").innerText =
+  localStorage.getItem("movie");
+}
+
+// SUBMIT RATING
+function submit(){
   let r = document.getElementById("rating").value;
-  alert("You rated " + selectedMovie + " : " + r + " ⭐");
+
+  alert("Rated " + localStorage.getItem("movie") + " : " + r);
+
+  window.location.href = "language.html";
 }

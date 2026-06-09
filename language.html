@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Select Language</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="page">
+
+  <h2>Select Language</h2>
+
+  <button onclick="go('telugu')">Telugu</button>
+  <button onclick="go('hindi')">Hindi</button>
+  <button onclick="go('english')">English</button>
+  <button onclick="go('tamil')">Tamil</button>
+  <button onclick="go('malayalam')">Malayalam</button>
+
+</div>
+
+<script>
+function go(lang){
+  localStorage.setItem("lang", lang);
+  alert("Language selected: " + lang);
+  window.location.href = "genre.html";
+}
+</script>
+
+</body>
+</html>

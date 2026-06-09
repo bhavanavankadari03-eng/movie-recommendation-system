@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Select Genre</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="page">
+
+  <h2>Select Movie Type</h2>
+
+  <button onclick="go('Action')">Action</button>
+  <button onclick="go('Comedy')">Comedy</button>
+  <button onclick="go('Romance')">Romance</button>
+  <button onclick="go('Drama')">Drama</button>
+  <button onclick="go('Sci-Fi')">Sci-Fi</button>
+
+</div>
+
+<script>
+function go(type){
+  localStorage.setItem("type", type);
+  alert("Genre selected: " + type);
+  window.location.href = "movies.html";
+}
+</script>
+
+</body>
+</html>

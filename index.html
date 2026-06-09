@@ -1,55 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Movie App - Login</title>
+  <title>Login</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="center">
 
-<div class="center-box">
-
+<div class="card">
   <h1>🎬 Movie World</h1>
 
-  <input type="email" id="email" placeholder="Email">
-  <input type="password" id="password" placeholder="Password">
+  <input id="email" type="email" placeholder="Email">
+  <input id="pass" type="password" placeholder="Password">
 
   <button onclick="login()">Login</button>
-
-  <button onclick="googleLogin()">Login with Google</button>
-
-  <p onclick="forgot()">Forgot Password?</p>
-
-  <hr>
-
-  <h3>Select Language</h3>
-
-  <button onclick="go('telugu')">Telugu</button>
-  <button onclick="go('hindi')">Hindi</button>
-  <button onclick="go('english')">English</button>
-  <button onclick="go('tamil')">Tamil</button>
-  <button onclick="go('malayalam')">Malayalam</button>
-
+  <button class="google">Login with Google</button>
 </div>
 
 <script>
 function login(){
   if(document.getElementById("email").value){
     alert("Login Successful");
+    window.location.href = "language.html";
   }
-}
-
-function googleLogin(){
-  alert("Google Login Successful (Demo)");
-}
-
-function forgot(){
-  let e = prompt("Enter email");
-  alert("Reset link sent to " + e);
-}
-
-function go(lang){
-  localStorage.setItem("lang", lang);
-  window.location.href = "home.html";
 }
 </script>
 

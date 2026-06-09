@@ -1,16 +1,24 @@
 body {
   font-family: Arial;
   margin: 0;
-  background: #0f0f1a;
+  background: #0b0b16;
   color: white;
 }
 
-.center-box {
+.center {
   text-align: center;
-  margin-top: 100px;
+  padding-top: 100px;
 }
 
-input, button {
+.card {
+  background: #1c1c2e;
+  padding: 20px;
+  margin: 20px auto;
+  width: 250px;
+  border-radius: 10px;
+}
+
+input, button, select {
   padding: 10px;
   margin: 5px;
 }
@@ -22,33 +30,13 @@ button {
   cursor: pointer;
 }
 
-.top {
-  background: #111;
-  padding: 15px;
-  text-align: center;
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.section {
-  padding: 20px;
-  text-align: center;
-}
-
-.movie-card {
-  background: #222;
-  margin: 10px;
-  padding: 10px;
-  display: inline-block;
-  width: 200px;
-  border-radius: 10px;
-}
-
-.movie-card img {
+.card img {
   width: 100%;
   border-radius: 10px;
-}
-
-.rating-box {
-  display: none;
-  text-align: center;
-  margin-top: 20px;
 }
