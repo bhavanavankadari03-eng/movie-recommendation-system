@@ -1,36 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Rate Movie</title>
+    <title>Rating</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="page-container rating-page">
+<h1>Rate Movie</h1>
 
-    <h1>⭐ Rate This Movie</h1>
+<h2 id="movieName"></h2>
 
-    <h2 id="movieName"></h2>
+<select id="rating">
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+</select>
 
-    <p>Select your rating:</p>
-
-    <select id="rating">
-        <option value="1">1 ⭐</option>
-        <option value="2">2 ⭐</option>
-        <option value="3">3 ⭐</option>
-        <option value="4">4 ⭐</option>
-        <option value="5">5 ⭐</option>
-    </select>
-
-    <br><br>
-
-    <button onclick="submitRating()">
-        Submit Rating
-    </button>
-
-</div>
+<button onclick="submitRating()">Submit</button>
 
 <script src="script.js"></script>
-
 </body>
 </html>

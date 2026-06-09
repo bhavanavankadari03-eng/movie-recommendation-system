@@ -1,22 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Recommended Movies</title>
+    <title>Movies</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body onload="loadMovies()">
 
-<div class="page-container">
+<h1 id="selectedInfo"></h1>
 
-    <h1>🎬 Recommended Movies</h1>
-
-    <h3 id="selectedInfo"></h3>
-
-    <div id="moviesContainer" class="movies-grid"></div>
-
-</div>
+<div id="moviesContainer"></div>
 
 <script src="script.js"></script>
-
 </body>
 </html>

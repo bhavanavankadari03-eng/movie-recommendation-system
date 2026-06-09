@@ -1,82 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Movie Recommendation System</title>
+    <title>Movie App</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="login-page">
+<body>
 
-<div class="login-container">
+<div class="box">
 
-    <div id="loginForm">
+<h1>🎬 Movie Recommendation</h1>
 
-        <h1>🎬 Movie Recommendation System</h1>
+<div id="loginForm">
 
-        <input type="email"
-               id="loginEmail"
-               placeholder="Email">
+<input id="loginEmail" placeholder="Email">
+<input id="loginPassword" placeholder="Password">
 
-        <input type="password"
-               id="loginPassword"
-               placeholder="Password">
+<button onclick="login()">Login</button>
+<button onclick="googleLogin()">Google Login</button>
 
-        <button onclick="login()">
-            Login
-        </button>
+<p onclick="showSignup()">Sign Up</p>
 
-        <button class="google-btn">
-            Login with Google
-        </button>
+</div>
 
-        <p onclick="forgotPassword()">
-            Forgot Password?
-        </p>
+<div id="signupForm" style="display:none;">
 
-        <p>
-            New User?
-            <a href="#" onclick="showSignup()">
-                Sign Up
-            </a>
-        </p>
+<input id="name" placeholder="Name">
+<input id="signupEmail" placeholder="Email">
+<input id="signupPassword" placeholder="Password">
+<input id="confirmPassword" placeholder="Confirm Password">
 
-    </div>
+<button onclick="signup()">Create Account</button>
 
-    <div id="signupForm" style="display:none;">
+<p onclick="showLogin()">Back to Login</p>
 
-        <h1>Create Account</h1>
-
-        <input type="text"
-               id="name"
-               placeholder="Full Name">
-
-        <input type="email"
-               id="signupEmail"
-               placeholder="Email">
-
-        <input type="password"
-               id="signupPassword"
-               placeholder="Password">
-
-        <input type="password"
-               id="confirmPassword"
-               placeholder="Confirm Password">
-
-        <button onclick="signup()">
-            Create Account
-        </button>
-
-        <p>
-            Already have an account?
-            <a href="#" onclick="showLogin()">
-                Login
-            </a>
-        </p>
-
-    </div>
+</div>
 
 </div>
 
 <script src="script.js"></script>
-
 </body>
 </html>

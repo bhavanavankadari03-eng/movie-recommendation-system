@@ -1,12 +1,12 @@
 /* LOGIN */
 function showSignup(){
-    document.getElementById("loginForm").style.display = "none";
-    document.getElementById("signupForm").style.display = "block";
+    document.getElementById("loginForm").style.display="none";
+    document.getElementById("signupForm").style.display="block";
 }
 
 function showLogin(){
-    document.getElementById("signupForm").style.display = "none";
-    document.getElementById("loginForm").style.display = "block";
+    document.getElementById("signupForm").style.display="none";
+    document.getElementById("loginForm").style.display="block";
 }
 
 function signup(){
@@ -14,42 +14,39 @@ function signup(){
     localStorage.setItem("pass", document.getElementById("signupPassword").value);
 
     alert("Account Created");
-    window.location.href = "language.html";
+    window.location.href="language.html";
 }
 
 function login(){
+    let e=document.getElementById("loginEmail").value;
+    let p=document.getElementById("loginPassword").value;
 
-    let e = document.getElementById("loginEmail").value;
-    let p = document.getElementById("loginPassword").value;
-
-    if(e === localStorage.getItem("email") && p === localStorage.getItem("pass")){
+    if(e===localStorage.getItem("email") && p===localStorage.getItem("pass")){
         alert("Login Success");
-        window.location.href = "language.html";
+        window.location.href="language.html";
     } else {
-        alert("Wrong credentials");
+        alert("Invalid Login");
     }
 }
 
 function googleLogin(){
     alert("Google Login Success (demo)");
-    window.location.href = "language.html";
+    window.location.href="language.html";
 }
 
 /* LANGUAGE */
 function selectLanguage(lang){
     localStorage.setItem("language", lang.toLowerCase());
-    alert(lang + " selected");
-    window.location.href = "genre.html";
+    window.location.href="genre.html";
 }
 
 /* GENRE */
 function selectGenre(genre){
     localStorage.setItem("genre", genre);
-    alert(genre + " selected");
-    window.location.href = "movies.html";
+    window.location.href="movies.html";
 }
 
-/* MOVIE DATABASE */
+/* MOVIE DATABASE (FIXED KEYS) */
 const movies = {
 telugu:{
 Action:["RRR","Baahubali","Pushpa","Salaar","Akhanda"],
@@ -65,7 +62,7 @@ hindi:{
 Action:["Pathaan","Jawan","War","URI","Singham"],
 Comedy:["3 Idiots","Hera Pheri","Stree","Golmaal","Phir Hera Pheri"],
 Romance:["DDLJ","Jab We Met","Rockstar","Aashiqui 2","Veer Zaara"],
-Drama:["Dangal","Chhichhore","Pink","Taare Zameen Par","Article 15"],
+Drama:["Dangal","Taare Zameen Par","Chhichhore","Pink","Article 15"],
 Thriller:["Drishyam","Andhadhun","Kahaani","Badla","Special 26"],
 Horror:["Stree","Raaz","Pari","1920","Bhootnath"],
 "Sci-Fi":["Robot","Koi Mil Gaya","Ra.One","PK","Cargo"]
@@ -102,26 +99,31 @@ Horror:["Ezra","Bhoothakaalam","Nine","Winter","Red Rain"],
 }
 };
 
-/* LOAD MOVIES */
+/* LOAD MOVIES (FIXED SAFE VERSION) */
 function loadMovies(){
 
-let lang = localStorage.getItem("language");
-let genre = localStorage.getItem("genre");
+let lang=localStorage.getItem("language");
+let genre=localStorage.getItem("genre");
 
-let list = movies[lang][genre];
+if(!movies[lang] || !movies[lang][genre]){
+    document.getElementById("moviesContainer").innerHTML="No movies found";
+    return;
+}
 
-document.getElementById("selectedInfo").innerText = lang + " - " + genre;
+let list=movies[lang][genre];
 
-let container = document.getElementById("moviesContainer");
+document.getElementById("selectedInfo").innerText=
+lang.toUpperCase()+" - "+genre;
 
-container.innerHTML = "";
+let container=document.getElementById("moviesContainer");
+container.innerHTML="";
 
-list.forEach(m => {
+list.forEach(m=>{
 
-let div = document.createElement("div");
-div.className = "movie-card";
+let div=document.createElement("div");
+div.className="movie-card";
 
-div.innerHTML = `
+div.innerHTML=`
 <h3>${m}</h3>
 <button onclick="selectMovie('${m}')">Rate</button>
 `;
@@ -134,12 +136,12 @@ container.appendChild(div);
 
 /* SELECT MOVIE */
 function selectMovie(m){
-localStorage.setItem("movie", m);
-window.location.href = "rating.html";
+localStorage.setItem("movie",m);
+window.location.href="rating.html";
 }
 
 /* RATING */
 function submitRating(){
-alert("Rated " + localStorage.getItem("movie") + " ⭐ " + document.getElementById("rating").value);
-window.location.href = "language.html";
+alert("Rated "+localStorage.getItem("movie")+" ⭐ "+document.getElementById("rating").value);
+window.location.href="language.html";
 }

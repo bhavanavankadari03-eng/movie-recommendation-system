@@ -1,42 +1,30 @@
-body {
-  font-family: Arial;
-  margin: 0;
-  background: #0b0b16;
-  color: white;
+body{
+    font-family: Arial;
+    text-align:center;
+    background:#111;
+    color:white;
 }
 
-.center {
-  text-align: center;
-  padding-top: 100px;
+.box{
+    margin-top:100px;
 }
 
-.card {
-  background: #1c1c2e;
-  padding: 20px;
-  margin: 20px auto;
-  width: 250px;
-  border-radius: 10px;
+input,button,select{
+    padding:10px;
+    margin:10px;
 }
 
-input, button, select {
-  padding: 10px;
-  margin: 5px;
+button{
+    background:red;
+    color:white;
+    border:none;
+    cursor:pointer;
 }
 
-button {
-  background: red;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-.grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.card img {
-  width: 100%;
-  border-radius: 10px;
+.movie-card{
+    background:#222;
+    margin:10px;
+    padding:10px;
+    display:inline-block;
+    width:150px;
 }
